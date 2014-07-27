@@ -1,0 +1,85 @@
+\documentclass[11pt]{article} 
+\usepackage[letterpaper,%
+						top=0.25in,bottom=0.5in,right=0.75in,left=0.75in,%
+						includehead,includefoot]{geometry}
+\usepackage{misc}                         % configuration de la page
+\usepackage[utf8x]{inputenc}              % encodage
+\usepackage{mypazo}                       % police 'pazo'
+\usepackage{avant}                        % police pour sans serif
+\usepackage{bbding}                       % symboles
+\usepackage{mymath}                       % math 
+\usepackage{xspace}                       % espace après raccourcis 
+\usepackage{graphicx}                     % graphiques + '\scalebox'
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+	\hypersetup{colorlinks=false,linkcolor=red,
+		linkbordercolor=red,pdfborderstyle={/S/U/W 1}}
+\usepackage[round]{natbib}
+% -------------------------------------------------------------------------------
+
+% interligne, numérotage et format pour boîtes d'encadrement 
+\linespread{1.2}
+\pagestyle{empty}
+\setlength{\fboxsep}{8pt}
+% -------------------------------------------------------------------------------
+
+% raccourcis (texte et symboles)
+\def\name{Étienne Tétreault-Pinard}
+\def\address{1850 boul. St-Joseph Est app.5 Montréal QC}
+\def\phone{514-267-2118}
+\newcommand{\mcgill}{McGill University\xspace}
+\newcommand{\uw}{University of Washington\xspace}
+\def\email{\href{mailto:etienne.t.pinard@gmail.co}{etienne.t.pinard@gmail.com}}
+\def\plot{\href{https://plot.ly/~etpinard/25/}
+               {here}\xspace}
+\def\nbvi{\href{http://nbviewer.ipython.org/gist/etpinard/9278679}
+               {IPython notebook}\xspace}
+% -------------------------------------------------------------------------------
+
+% -------------------------------------------------------------------------------
+% -------------------------------------------------------------------------------
+% -------------------------------------------------------------------------------
+
+\begin{document}
+
+\begin{center}
+{\LARGE\textsf{TUG 2014}}
+\bump\large{\textsf{\today}}
+\end{center}
+\bigskip \hrule \bigskip\medskip
+
+% title
+{\large \textbf{Title:~} 
+%
+Plotly: collaborative, interactive, and online plotting with \TeX \medskip
+% -------------------------------------------------------------------------------
+
+% abstract
+\textbf{Abstract} 
+
+\TeX was designed with the goal of allowing anyone to produce high-quality
+documents with minimal effort, and to provide a system
+compatible on all computers, now and in the future \citep{gaudeul06}. 
+
+Plotly applies the same core principles to graphics. Plotly allows users
+collaboratively make and share interactive graphics online using Python, MATLAB,
+R, Excel data and \TeX (MathJax) for free. 
+%
+Additionally, Plotly allows users to easily embed and export graphics for
+publication, while backing up your graphics, data and revisions in the cloud.
+This tutorial outlines Plotly’s features and demonstrates how using Plotly
+creates unique workflows with emphasis on collaboration and reproducibility.
+
+For more \,\href{http://bit.ly/1vdF6Kp}{\texttt{bit.ly/1vdF6Kp}}.
+
+\medskip
+
+% bibliography
+\renewcommand\bibsection{\large\textbf{\refname}\mmedskip}
+\bibliographystyle{ametsoc}       % last name, first name initial, year ---
+\bibliography{tug}
+
+
+\end{document}
+
+
