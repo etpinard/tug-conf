@@ -1,44 +1,12 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="chrome=1" />
-
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-<title>test slides</title>
+<title>pres</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-<!-- General and theme style sheets -->
-<link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
-
-<!-- For syntax highlighting -->
-<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
-
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = 'reveal.js/css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-}
-
-</script>
-
-<!--[if lt IE 9]>
-<script src="reveal.js/lib/js/html5shiv.js"></script>
-<![endif]-->
-
-<!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
 
 <style type="text/css">
     .clearfix{*zoom:1}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0}
@@ -1650,75 +1618,63 @@ span#checkpoint_status,span#autosave_status{font-size:small}
 
 <style type="text/css">
 /* Overrides of notebook CSS for static HTML export */
-html {
-  overflow-y: auto;
+body {
+  overflow: visible;
+  padding: 8px;
 }
-.reveal {
-  font-size: 160%;
+
+div#notebook {
+  overflow: visible;
+  border-top: none;
 }
-.reveal pre {
-  width: inherit;
-  padding: 0.4em;
-  margin: 0px;
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-}
-.reveal section img {
-  border: 0px solid black;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
-}
-.reveal i {
-  font-style: normal;
-  font-family: FontAwesome;
-  font-size: 2em;
-}
-.reveal .slides {
-  text-align: left;
-}
-.reveal.fade {
-  opacity: 1;
-}
-.reveal .progress {
-  position: static;
-}
-div.input_area {
-  padding: 0.06em;
-}
-div.code_cell {
-  background-color: transparent;
-}
-div.prompt {
-  width: 11ex;
-  padding: 0.4em;
-  margin: 0px;
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-  text-align: right;
-}
-div.output_area pre {
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-}
-div.output_prompt {
-  /* 5px right shift to account for margin in parent container */
-  margin: 5px 5px 0 0;
-}
-.rendered_html p {
-  text-align: inherit;
+
+@media print {
+  div.cell {
+    display: block;
+    page-break-inside: avoid;
+  } 
+  div.output_wrapper { 
+    display: block;
+    page-break-inside: avoid; 
+  }
+  div.output { 
+    display: block;
+    page-break-inside: avoid; 
+  }
 }
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
 
-</head>
+<!-- Loading mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration -->
 
+</head>
 <body>
-<div class="reveal">
-<div class="slides">
-<div style=display:none>
-    
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
@@ -1726,7 +1682,7 @@ In&nbsp;[1]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="o">%</span><span class="k">run</span> <span class="n">talktools</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight"><pre><span class="o">%</span><span class="k">run</span> <span class="n">talktools</span>
 </pre></div>
 
 </div>
@@ -1746,59 +1702,41 @@ In&nbsp;[1]:
 {
   color: #2C5494;
   font-family: Ubuntu;
-  font-size: 140%;
+  font-size: 160%;
   line-height: 1.1;
   margin: 0.5em 0;
-  }
-
-.title
-{
-  color: #498AF3;
-  font-size: 250%;
-  font-weight:bold;
-  line-height: 1.2; 
-  margin: 10px 50px 10px;
-  }
-
-.subtitle
-{
-  color: #386BBC;
-  font-size: 180%;
-  font-weight:bold;
-  line-height: 1.2; 
-  margin: 20px 50px 20px;
-  }
-
-.slide-header, p.slide-header
-{
-  color: #498AF3;
-  font-size: 200%;
-  font-weight:bold;
-  margin: 0px 20px 10px;
-  page-break-before: always;
-  text-align: center;
   }
 
 .rendered_html h1
 {
   color: #498AF3;
-  line-height: 1.2; 
-  margin: 0.15em 0em 0.5em;
+  line-height: 1.5; 
   page-break-before: always;
   text-align: center;
-  }
+  font-size: 300%;
+}
 
+.rendered_html h1:first-child 
+{
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
 
 .rendered_html h2
 { 
   color: #386BBC;
   line-height: 1.2;
   margin: 1.1em 0em 0.5em;
-  }
-
+  font-size: 250%;
+}
+.rendered_html h2:first-child {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
 .rendered_html h3
 { 
-  font-size: 100%;
+  color: #386BBC;
+  font-size: 150%;
   line-height: 1.2;
   margin: 1.1em 0em 0.5em;
   }
@@ -1812,8 +1750,23 @@ In&nbsp;[1]:
 {
   font-family: Consolas;
   font-size: 120%;
+  margin: 0 auto;
   }
-
+.output_subarea
+{
+  overflow-y: scroll;
+  max-height: 500px;
+}
+.output_subarea.output_html
+{
+  overflow-y: auto;
+  max-height: none;
+  margin: auto;
+}
+.prompt 
+{
+    display: None;
+}
 .gap-above
 {
   padding-top: 200px;
@@ -1857,12 +1810,16 @@ In&nbsp;[1]:
 .center
 {
   text-align: center;
-  }
+}
 
 .nb_link
 {
-    padding-bottom: 0.5em;
+  padding-bottom: 0.5em;
 }
+ iframe::-webkit-scrollbar 
+{  
+  display: none;
+}  
 
 </style>
 
@@ -1874,20 +1831,35 @@ In&nbsp;[1]:
 </div>
 
 </div>
-    </div></section>
-    </section><section>
-    <section>
-    
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Plotly-test">Plotly test<a class="anchor-link" href="#Plotly-test">&#182;</a></h1>
+<h1 id="plotly-br-collaborative-interactive-br-nbsp-nbsp-nbsp-and-online-plotting-with-0-">Plotly<br> collaborative, interactive <br> &nbsp; &nbsp; &nbsp; and online plotting with $\TeX$</h1>
 </div>
 </div>
 </div>
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="What-is-Plotly?">What is Plotly?<a class="anchor-link" href="#What-is-Plotly?">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Plotly is an <strong>online</strong> analytics and data visualization tool.</p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
@@ -1895,8 +1867,9 @@ In&nbsp;[2]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span>  <span class="mi">3</span>
-<span class="k">print</span> <span class="n">a</span>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="s">&quot;https://plot.ly/~Dreamshot/407&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s">&quot;900px&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s">&#39;500px&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -1907,20 +1880,48 @@ In&nbsp;[2]:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-4
+<div class="output_area"><div class="prompt output_prompt">
+    Out[2]:</div>
 
-</pre>
+<div class="output_html rendered_html output_subarea output_pyout">
+
+        <iframe
+            width="900px"
+            height=500px"
+            src="https://plot.ly/~Dreamshot/407"
+            frameborder="0"
+            allowfullscreen
+        ></iframe>
+        
 </div>
+
 </div>
 
 </div>
 </div>
 
-</div><div class="fragment">
-    
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Why-is-Plotly-at-TUG-2014?">Why is Plotly at TUG 2014?<a class="anchor-link" href="#Why-is-Plotly-at-TUG-2014?">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>You can use $\TeX$ symbols to annotate Plotly graphs, (using the <a href="http://www.mathjax.org/">MathJax</a> display engine)</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
@@ -1928,7 +1929,9 @@ In&nbsp;[3]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">website</span><span class="p">(</span><span class="s">&quot;https://plot.ly/~Dreamshot/404&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span class="c"># from IPython.display import IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="s">&quot;https://plot.ly/~PlotBot/3&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s">&quot;900px&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s">&#39;500px&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -1943,7 +1946,15 @@ In&nbsp;[3]:
     Out[3]:</div>
 
 <div class="output_html rendered_html output_subarea output_pyout">
-<iframe src="https://plot.ly/~Dreamshot/404"  width="800" height="450">
+
+        <iframe
+            width="900px"
+            height=500px"
+            src="https://plot.ly/~PlotBot/3"
+            frameborder="0"
+            allowfullscreen
+        ></iframe>
+        
 </div>
 
 </div>
@@ -1952,79 +1963,770 @@ In&nbsp;[3]:
 </div>
 
 </div>
-    </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="But-really-...-Why-is-Plotly-at-TUG-2014?">But really ... Why is Plotly at TUG 2014?<a class="anchor-link" href="#But-really-...-Why-is-Plotly-at-TUG-2014?">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="...-Philosophy">... Philosophy<a class="anchor-link" href="#...-Philosophy">&#182;</a></h4>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$\TeX$ provides a system that gives exactly the same results on all computers</p>
+<ul>
+<li>$\TeX$ is <strong>cross-operating system</strong></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$\TeX$ allows anybody to produce high-quality documents efficiently</p>
+<ul>
+<li>$\TeX$ is a <strong>free</strong> and <strong>cross-text editor</strong> platform</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Plotly applies the same core principles to graphs</p>
+<ul>
+<li>Plotly is <strong>free</strong>, <strong>cross-operating system</strong> and  <strong>cross-scientific computing language</strong></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Collaboration-in-data-intensive-fields-sometimes-feels-like-this:">Collaboration in data-intensive fields sometimes feels like this:<a class="anchor-link" href="#Collaboration-in-data-intensive-fields-sometimes-feels-like-this:">&#182;</a></h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src='https://i.imgur.com/4DrMgLI.png' /></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Plotly solves this collaboration (i.e. reproducibility) problem:</p>
+<ul>
+<li>Plotly graphs are <strong>closely connected to their underlying data</strong> (more later) </li>
+<li>Plotly graphs are <strong>stored in the cloud</strong></li>
+<li>Plotly provides a <strong>common graphing platform</strong> for Python, MATLAB, R, Node.js, Julia and Excel users.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="A-Plotly-graph-made-in-Python">A Plotly graph made in Python<a class="anchor-link" href="#A-Plotly-graph-made-in-Python">&#182;</a></h3>
+</div>
+</div>
+</div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[3]:
+In&nbsp;[4]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre> 
+<div class="highlight"><pre><span class="c"># from IPython.display import IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="s">&quot;https://plot.ly/python/histograms/#Overlaid-Histgram&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s">&quot;1100px&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s">&#39;520px&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[4]:</div>
+
+<div class="output_html rendered_html output_subarea output_pyout">
+
+        <iframe
+            width="1100px"
+            height=520px"
+            src="https://plot.ly/python/histograms/#Overlaid-Histgram"
+            frameborder="0"
+            allowfullscreen
+        ></iframe>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-same-Plotly-graph,-now-made-in-MATLAB">The same Plotly graph, now made in MATLAB<a class="anchor-link" href="#The-same-Plotly-graph,-now-made-in-MATLAB">&#182;</a></h3>
 </div>
 </div>
 </div>
 
-<script src="reveal.js/lib/js/head.min.js"></script>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[5]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="c"># from IPython.display import IFrame</span>
 
-<script src="reveal.js/js/reveal.js"></script>
+<span class="n">IFrame</span><span class="p">(</span><span class="s">&quot;https://plot.ly/matlab/histograms/#Overlaid-Histgram&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s">&quot;1100px&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s">&#39;520px&#39;</span><span class="p">)</span>
+</pre></div>
 
-<script>
+</div>
+</div>
+</div>
 
-// Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
-Reveal.initialize({
-controls: true,
-progress: true,
-history: true,
+<div class="output_wrapper">
+<div class="output">
 
-theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
 
-// Optional libraries used to extend on reveal.js
-dependencies: [
-{ src: "reveal.js/lib/js/classList.js", condition: function() { return !document.body.classList; } },
-{ src: "reveal.js/plugin/highlight/highlight.js", async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-{ src: "reveal.js/plugin/notes/notes.js", async: true, condition: function() { return !!document.body.classList; } }
-]
-});
-</script>
+<div class="output_area"><div class="prompt output_prompt">
+    Out[5]:</div>
 
-<!-- Loading mathjax macro -->
-<!-- Load mathjax -->
-    <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-    <!-- MathJax configuration -->
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-            processEscapes: true,
-            processEnvironments: true
-        },
-        // Center justify equations in code and markdown cells. Elsewhere
-        // we use CSS to left justify single line equations in code cells.
-        displayAlign: 'center',
-        "HTML-CSS": {
-            styles: {'.MathJax_Display': {"margin": 0}},
-            linebreaks: { automatic: true }
-        }
-    });
-    </script>
-    <!-- End of mathjax configuration -->
+<div class="output_html rendered_html output_subarea output_pyout">
 
-<script>
-Reveal.addEventListener( 'slidechanged', function( event ) {
-  window.scrollTo(0,0);
-  MathJax.Hub.Rerender(event.currentSlide);
-});
-</script>
+        <iframe
+            width="1100px"
+            height=520px"
+            src="https://plot.ly/matlab/histograms/#Overlaid-Histgram"
+            frameborder="0"
+            allowfullscreen
+        ></iframe>
+        
+</div>
 
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="...-and-again-the-same-Plotly-graph,-now-made-in-R">... and again the same Plotly graph, now made in R<a class="anchor-link" href="#...-and-again-the-same-Plotly-graph,-now-made-in-R">&#182;</a></h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[6]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="c"># from IPython.display import IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="s">&quot;https://plot.ly/r/histograms/#Overlaid-Histgram&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s">&quot;1100px&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s">&#39;520px&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[6]:</div>
+
+<div class="output_html rendered_html output_subarea output_pyout">
+
+        <iframe
+            width="1100px"
+            height=520px"
+            src="https://plot.ly/r/histograms/#Overlaid-Histgram"
+            frameborder="0"
+            allowfullscreen
+        ></iframe>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="What-if-I-already-have-plot-generating-code-written?">What if I already have plot-generating code written?<a class="anchor-link" href="#What-if-I-already-have-plot-generating-code-written?">&#182;</a></h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>That&#39;s OK.</p>
+<p>Our libraries come with <strong>figure converters</strong> allowing </p>
+<ul>
+<li><a href="https://plot.ly/matlab/">MATLAB</a>,</li>
+<li><a href="https://plot.ly/matplotlib/">matplotlib</a> and </li>
+<li><a href="https://plot.ly/ggplot2/">ggplot2</a></li>
+</ul>
+<p>figures to be converted to Plotly figures with one line of code!</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[7]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="c"># from IPython.display import IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="s">&quot;https://plot.ly/matplotlib/&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s">&quot;1100px&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s">&#39;520px&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[7]:</div>
+
+<div class="output_html rendered_html output_subarea output_pyout">
+
+        <iframe
+            width="1100px"
+            height=520px"
+            src="https://plot.ly/matplotlib/"
+            frameborder="0"
+            allowfullscreen
+        ></iframe>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="How-to-make-Plotly-graph-using-our-web-app">How to make Plotly graph using our web app<a class="anchor-link" href="#How-to-make-Plotly-graph-using-our-web-app">&#182;</a></h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Have some <a href="http://en.wikipedia.org/wiki/Portland,_Oregon#Demographics">data</a> to plot</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Go to <a href="https://plot.ly">plot.ly</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Plotly-rhymes-with-collaboration-and-reproducibility">Plotly rhymes with collaboration and reproducibility<a class="anchor-link" href="#Plotly-rhymes-with-collaboration-and-reproducibility">&#182;</a></h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Plotly allows you to <strong>retrieve</strong> a figure&#39;s underlying JSON object!</p>
+<p>For example, in Python:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[8]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">plotly.plotly</span> <span class="kn">as</span> <span class="nn">py</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">py</span><span class="o">.</span><span class="n">get_figure</span><span class="p">(</span><span class="s">&quot;https://plot.ly/~etpinard/448&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[8]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+{&apos;data&apos;: [{&apos;name&apos;: u&apos;Pop.&apos;,
+   &apos;type&apos;: u&apos;scatter&apos;,
+   &apos;x&apos;: [u&apos;1860&apos;,
+    u&apos;1870&apos;,
+    u&apos;1880&apos;,
+    u&apos;1890&apos;,
+    u&apos;1900&apos;,
+    u&apos;1910&apos;,
+    u&apos;1920&apos;,
+    u&apos;1930&apos;,
+    u&apos;1940&apos;,
+    u&apos;1950&apos;,
+    u&apos;1960&apos;,
+    u&apos;1970&apos;,
+    u&apos;1980&apos;,
+    u&apos;1990&apos;,
+    u&apos;2000&apos;,
+    u&apos;2010&apos;,
+    u&apos;2013&apos;],
+   &apos;y&apos;: [u&apos;2,874&apos;,
+    u&apos;8,293&apos;,
+    u&apos;17,577&apos;,
+    u&apos;46,385&apos;,
+    u&apos;90,426&apos;,
+    u&apos;207,214&apos;,
+    u&apos;258,288&apos;,
+    u&apos;301,815&apos;,
+    u&apos;305,394&apos;,
+    u&apos;373,628&apos;,
+    u&apos;372,676&apos;,
+    u&apos;382,619&apos;,
+    u&apos;366,383&apos;,
+    u&apos;437,319&apos;,
+    u&apos;529,121&apos;,
+    u&apos;583,776&apos;,
+    u&apos;609,456&apos;]},
+  {&apos;line&apos;: {&apos;color&apos;: u&apos;rgb(255, 127, 14)&apos;, &apos;dash&apos;: u&apos;solid&apos;, &apos;width&apos;: 6},
+   &apos;name&apos;: u&apos;Pop. - fit&apos;,
+   &apos;opacity&apos;: 0.5,
+   &apos;type&apos;: u&apos;scatter&apos;,
+   &apos;x&apos;: [1860,
+    1863.1224489795918,
+    1866.2448979591836,
+    1869.3673469387754,
+    1872.4897959183672,
+    1875.6122448979593,
+    1878.734693877551,
+    1881.857142857143,
+    1884.9795918367347,
+    1888.1020408163265,
+    1891.2244897959183,
+    1894.3469387755101,
+    1897.469387755102,
+    1900.591836734694,
+    1903.7142857142858,
+    1906.8367346938776,
+    1909.9591836734694,
+    1913.0816326530612,
+    1916.204081632653,
+    1919.3265306122448,
+    1922.4489795918366,
+    1925.5714285714287,
+    1928.6938775510205,
+    1931.8163265306123,
+    1934.938775510204,
+    1938.061224489796,
+    1941.1836734693877,
+    1944.3061224489795,
+    1947.4285714285713,
+    1950.5510204081634,
+    1953.6734693877552,
+    1956.795918367347,
+    1959.9183673469388,
+    1963.0408163265306,
+    1966.1632653061224,
+    1969.2857142857142,
+    1972.408163265306,
+    1975.530612244898,
+    1978.6530612244899,
+    1981.7755102040817,
+    1984.8979591836735,
+    1988.0204081632653,
+    1991.142857142857,
+    1994.265306122449,
+    1997.3877551020407,
+    2000.5102040816328,
+    2003.6326530612246,
+    2006.7551020408164,
+    2009.8775510204082,
+    2013],
+   &apos;xaxis&apos;: u&apos;x&apos;,
+   &apos;y&apos;: [-24905.93916280754,
+    -12636.203280905262,
+    -366.4673990039155,
+    11903.268482898362,
+    24173.00436480064,
+    36442.74024670292,
+    48712.476128605194,
+    60982.21201050747,
+    73251.94789240882,
+    85521.6837743111,
+    97791.41965621337,
+    110061.15553811472,
+    122330.891420017,
+    134600.6273019202,
+    146870.36318382155,
+    159140.09906572383,
+    171409.8349476261,
+    183679.57082952745,
+    195949.30671142973,
+    208219.042593332,
+    220488.77847523335,
+    232758.51435713656,
+    245028.25023903884,
+    257297.9861209402,
+    269567.72200284246,
+    281837.45788474474,
+    294107.1937666461,
+    306376.92964854836,
+    318646.66553045064,
+    330916.4014123529,
+    343186.1372942552,
+    355455.8731761575,
+    367725.6090580588,
+    379995.3449399611,
+    392265.0808218634,
+    404534.81670376565,
+    416804.552585667,
+    429074.2884675702,
+    441344.0243494725,
+    453613.76023137383,
+    465883.4961132761,
+    478153.2319951784,
+    490422.96787707973,
+    502692.703758982,
+    514962.4396408843,
+    527232.1755227866,
+    539501.9114046888,
+    551771.6472865911,
+    564041.3831684925,
+    576311.1190503947],
+   &apos;yaxis&apos;: u&apos;y&apos;}],
+ &apos;layout&apos;: {&apos;annotations&apos;: [{&apos;align&apos;: u&apos;left&apos;,
+    &apos;arrowcolor&apos;: u&apos;#636363&apos;,
+    &apos;arrowhead&apos;: 2,
+    &apos;arrowsize&apos;: 1,
+    &apos;arrowwidth&apos;: 2,
+    &apos;ax&apos;: -265,
+    &apos;ay&apos;: -112,
+    &apos;bgcolor&apos;: u&apos;rgba(0,0,0,0)&apos;,
+    &apos;bordercolor&apos;: u&apos;&apos;,
+    &apos;borderpad&apos;: 1,
+    &apos;borderwidth&apos;: 1,
+    &apos;font&apos;: {&apos;size&apos;: 28},
+    &apos;opacity&apos;: 0.8,
+    &apos;showarrow&apos;: True,
+    &apos;text&apos;: u&apos;$R^2 = 0.960 \\\\ y   = -7.33\\times10^6 + 3.93\\times10^3 x$&apos;,
+    &apos;textangle&apos;: 0,
+    &apos;x&apos;: 1933.706238213492,
+    &apos;xanchor&apos;: u&apos;auto&apos;,
+    &apos;xref&apos;: u&apos;x&apos;,
+    &apos;y&apos;: 262636.0070362699,
+    &apos;yanchor&apos;: u&apos;auto&apos;,
+    &apos;yref&apos;: u&apos;y&apos;}],
+  &apos;autosize&apos;: True,
+  &apos;bargap&apos;: 0.2,
+  &apos;bargroupgap&apos;: 0,
+  &apos;barmode&apos;: u&apos;group&apos;,
+  &apos;boxmode&apos;: u&apos;overlay&apos;,
+  &apos;dragmode&apos;: u&apos;zoom&apos;,
+  &apos;font&apos;: {&apos;color&apos;: u&apos;#444&apos;,
+   &apos;family&apos;: u&apos;&quot;Open sans&quot;, verdana, arial, sans-serif&apos;,
+   &apos;size&apos;: 12},
+  &apos;height&apos;: 474,
+  &apos;hidesources&apos;: False,
+  &apos;hovermode&apos;: u&apos;x&apos;,
+  &apos;legend&apos;: {&apos;bgcolor&apos;: u&apos;#fff&apos;,
+   &apos;bordercolor&apos;: u&apos;#444&apos;,
+   &apos;borderwidth&apos;: 0,
+   &apos;font&apos;: {&apos;color&apos;: u&apos;&apos;, &apos;family&apos;: u&apos;&apos;, &apos;size&apos;: 0},
+   &apos;traceorder&apos;: u&apos;normal&apos;,
+   &apos;x&apos;: 1.02,
+   &apos;xanchor&apos;: u&apos;left&apos;,
+   &apos;y&apos;: 1,
+   &apos;yanchor&apos;: u&apos;top&apos;},
+  &apos;margin&apos;: {&apos;autoexpand&apos;: True,
+   &apos;b&apos;: 80,
+   &apos;l&apos;: 80,
+   &apos;pad&apos;: 0,
+   &apos;r&apos;: 80,
+   &apos;t&apos;: 100},
+  &apos;paper_bgcolor&apos;: u&apos;#fff&apos;,
+  &apos;plot_bgcolor&apos;: u&apos;#fff&apos;,
+  &apos;separators&apos;: u&apos;.,&apos;,
+  &apos;showlegend&apos;: True,
+  &apos;title&apos;: u&quot;Portland&apos;s Pop&quot;,
+  &apos;titlefont&apos;: {&apos;color&apos;: u&apos;&apos;, &apos;family&apos;: u&apos;&apos;, &apos;size&apos;: 0},
+  &apos;width&apos;: 1297,
+  &apos;xaxis&apos;: {&apos;anchor&apos;: u&apos;y&apos;,
+   &apos;autorange&apos;: True,
+   &apos;autotick&apos;: True,
+   &apos;domain&apos;: [0, 1],
+   &apos;dtick&apos;: 20,
+   &apos;exponentformat&apos;: u&apos;B&apos;,
+   &apos;gridcolor&apos;: u&apos;#eee&apos;,
+   &apos;gridwidth&apos;: 1,
+   &apos;linecolor&apos;: u&apos;#444&apos;,
+   &apos;linewidth&apos;: 1,
+   &apos;mirror&apos;: False,
+   &apos;nticks&apos;: 0,
+   &apos;overlaying&apos;: False,
+   &apos;position&apos;: 0,
+   &apos;range&apos;: [1851.5, 2021.5],
+   &apos;rangemode&apos;: u&apos;normal&apos;,
+   &apos;showexponent&apos;: u&apos;all&apos;,
+   &apos;showgrid&apos;: True,
+   &apos;showline&apos;: False,
+   &apos;showticklabels&apos;: True,
+   &apos;tick0&apos;: 0,
+   &apos;tickangle&apos;: u&apos;auto&apos;,
+   &apos;tickcolor&apos;: u&apos;#444&apos;,
+   &apos;tickfont&apos;: {&apos;color&apos;: u&apos;&apos;, &apos;family&apos;: u&apos;&apos;, &apos;size&apos;: 0},
+   &apos;ticklen&apos;: 5,
+   &apos;ticks&apos;: u&apos;&apos;,
+   &apos;tickwidth&apos;: 1,
+   &apos;title&apos;: u&apos;Census&apos;,
+   &apos;titlefont&apos;: {&apos;color&apos;: u&apos;&apos;, &apos;family&apos;: u&apos;&apos;, &apos;size&apos;: 0},
+   &apos;type&apos;: u&apos;linear&apos;,
+   &apos;zeroline&apos;: True,
+   &apos;zerolinecolor&apos;: u&apos;#444&apos;,
+   &apos;zerolinewidth&apos;: 1},
+  &apos;yaxis&apos;: {&apos;anchor&apos;: u&apos;x&apos;,
+   &apos;autorange&apos;: True,
+   &apos;autotick&apos;: True,
+   &apos;domain&apos;: [0, 1],
+   &apos;dtick&apos;: 100000,
+   &apos;exponentformat&apos;: u&apos;B&apos;,
+   &apos;gridcolor&apos;: u&apos;#eee&apos;,
+   &apos;gridwidth&apos;: 1,
+   &apos;linecolor&apos;: u&apos;#444&apos;,
+   &apos;linewidth&apos;: 1,
+   &apos;mirror&apos;: False,
+   &apos;nticks&apos;: 0,
+   &apos;overlaying&apos;: False,
+   &apos;position&apos;: 0,
+   &apos;range&apos;: [-60148.26911629685, 644698.3299534894],
+   &apos;rangemode&apos;: u&apos;normal&apos;,
+   &apos;showexponent&apos;: u&apos;all&apos;,
+   &apos;showgrid&apos;: True,
+   &apos;showline&apos;: False,
+   &apos;showticklabels&apos;: True,
+   &apos;tick0&apos;: 0,
+   &apos;tickangle&apos;: u&apos;auto&apos;,
+   &apos;tickcolor&apos;: u&apos;#444&apos;,
+   &apos;tickfont&apos;: {&apos;color&apos;: u&apos;&apos;, &apos;family&apos;: u&apos;&apos;, &apos;size&apos;: 0},
+   &apos;ticklen&apos;: 5,
+   &apos;ticks&apos;: u&apos;&apos;,
+   &apos;tickwidth&apos;: 1,
+   &apos;title&apos;: u&apos;Pop.&apos;,
+   &apos;titlefont&apos;: {&apos;color&apos;: u&apos;&apos;, &apos;family&apos;: u&apos;&apos;, &apos;size&apos;: 0},
+   &apos;type&apos;: u&apos;-&apos;,
+   &apos;zeroline&apos;: True,
+   &apos;zerolinecolor&apos;: u&apos;#444&apos;,
+   &apos;zerolinewidth&apos;: 1}}}
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Remake-this-plot,-with-a-few-modifications">Remake this plot, with a few modifications<a class="anchor-link" href="#Remake-this-plot,-with-a-few-modifications">&#182;</a></h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[9]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">plotly.plotly</span> <span class="kn">as</span> <span class="nn">py</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">py</span><span class="o">.</span><span class="n">get_figure</span><span class="p">(</span><span class="s">&quot;https://plot.ly/~etpinard/448&quot;</span><span class="p">)</span>  <span class="c"># as in last slide</span>
+
+<span class="c"># Modify the title</span>
+<span class="n">fig</span><span class="p">[</span><span class="s">&#39;layout&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;The Historical Population of Portland, OR&quot;</span><span class="p">)</span>
+
+<span class="c"># Modify the y-axis label</span>
+<span class="n">fig</span><span class="p">[</span><span class="s">&#39;layout&#39;</span><span class="p">][</span><span class="s">&#39;yaxis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Population&quot;</span><span class="p">)</span>
+
+<span class="c"># Plots the data with marker points (not line)</span>
+<span class="n">fig</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s">&#39;markers&#39;</span><span class="p">)</span>
+
+
+<span class="c"># Re-generate plot, get a unique URL</span>
+<span class="n">py</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s">&quot;tug-conf-ex&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[9]:</div>
+
+
+<div class="output_text output_subarea output_pyout">
+<pre>
+u&apos;https://plot.ly/~etpinard/449&apos;
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Go to plot&#39;s URL  (or use <code>py.iplot()</code> to embed plot in IPython notebook) </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Moreover,-Plotly">Moreover, Plotly<a class="anchor-link" href="#Moreover,-Plotly">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>is also a social network (with a twitter-like <em>feed</em> of figures and <a href="https://plot.ly/~etpinard/25">commenting</a> on each graphs)</li>
+<li>allows users to make <em>private</em> figures (kind of like github, see our <a href="https://plot.ly/plans">plans</a>)</li>
+<li>allows users to make <em>streaming</em> plots (e.g. a never-ending double pendulum simulation: <a href="https://plot.ly/~streaming-demos/4">graph</a> and <a href="http://nbviewer.ipython.org/github/plotly/python-user-guide/blob/master/s7_streaming/s7_streaming_p2-double-pendulum.ipynb">code</a>)</li>
+<li>is developing of Open Source Libraries (e.g <a href="https://github.com/plotly/python-api">Python</a>, <a href="https://github.com/plotly/matlab-api">MATLAB</a>, <a href="https://github.com/ropensci/plotly">R</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Thank-you.">Thank you.<a class="anchor-link" href="#Thank-you.">&#182;</a></h4>
+</div>
+</div>
+</div>
+
+    </div>
+  </div>
 </body>
-
 </html>

@@ -1,0 +1,766 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{pres}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{o}{\PYZpc{}}\PY{k}{run} \PY{n}{talktools}
+\end{Verbatim}
+
+    
+    \begin{verbatim}
+<IPython.core.display.HTML at 0x7fd2c4a55510>
+    \end{verbatim}
+
+    
+
+    \section{Plotly collaborative, interactive ~ ~ ~ and online plotting with $\TeX$}
+
+
+
+    \subsection{What is Plotly?}
+
+
+    Plotly is an \textbf{online} analytics and data visualization tool.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{from} \PY{n+nn}{IPython.display} \PY{k+kn}{import} \PY{n}{IFrame}
+        
+        \PY{n}{IFrame}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{https://plot.ly/\PYZti{}Dreamshot/407}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{width}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{900px}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{height}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{500px}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} <IPython.lib.display.IFrame at 0x7fd2c52ad7d0>
+\end{Verbatim}
+        
+
+    \subsection{Why is Plotly at TUG 2014?}
+
+
+    \begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  You can use $\TeX$ symbols to annotate Plotly graphs, (using the
+  \href{http://www.mathjax.org/}{MathJax} display engine)
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c}{\PYZsh{} from IPython.display import IFrame}
+        
+        \PY{n}{IFrame}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{https://plot.ly/\PYZti{}PlotBot/3}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{width}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{900px}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{height}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{500px}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} <IPython.lib.display.IFrame at 0x7fd2c52ad710>
+\end{Verbatim}
+        
+
+    \subsection{But really \ldots{} Why is Plotly at TUG 2014?}
+
+
+
+    \paragraph{\ldots{} Philosophy}
+
+
+    $\TeX$ provides a system that gives exactly the same results on all
+computers
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  $\TeX$ is \textbf{cross-operating system}
+\end{itemize}
+
+    $\TeX$ allows anybody to produce high-quality documents efficiently
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  $\TeX$ is a \textbf{free} and \textbf{cross-text editor} platform
+\end{itemize}
+
+    Plotly applies the same core principles to graphs
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Plotly is \textbf{free}, \textbf{cross-operating system} and
+  \textbf{cross-scientific computing language}
+\end{itemize}
+
+
+    \subsubsection{Collaboration in data-intensive fields sometimes feels like this:}
+
+
+    
+
+    Plotly solves this collaboration (i.e.~reproducibility) problem:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Plotly graphs are \textbf{closely connected to their underlying data}
+  (more later)
+\item
+  Plotly graphs are \textbf{stored in the cloud}
+\item
+  Plotly provides a \textbf{common graphing platform} for Python,
+  MATLAB, R, Node.js, Julia and Excel users.
+\end{itemize}
+
+
+    \subsubsection{A Plotly graph made in Python}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c}{\PYZsh{} from IPython.display import IFrame}
+        
+        \PY{n}{IFrame}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{https://plot.ly/python/histograms/\PYZsh{}Overlaid\PYZhy{}Histgram}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{width}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{1100px}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{height}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{520px}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} <IPython.lib.display.IFrame at 0x7fd2c52b6fd0>
+\end{Verbatim}
+        
+
+    \subsubsection{The same Plotly graph, now made in MATLAB}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c}{\PYZsh{} from IPython.display import IFrame}
+        
+        \PY{n}{IFrame}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{https://plot.ly/matlab/histograms/\PYZsh{}Overlaid\PYZhy{}Histgram}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{width}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{1100px}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{height}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{520px}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} <IPython.lib.display.IFrame at 0x7fd2c4a55210>
+\end{Verbatim}
+        
+
+    \subsubsection{\ldots{} and again the same Plotly graph, now made in R}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c}{\PYZsh{} from IPython.display import IFrame}
+        
+        \PY{n}{IFrame}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{https://plot.ly/r/histograms/\PYZsh{}Overlaid\PYZhy{}Histgram}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{width}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{1100px}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{height}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{520px}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} <IPython.lib.display.IFrame at 0x7fd2c52adc50>
+\end{Verbatim}
+        
+
+    \subsubsection{What if I already have plot-generating code written?}
+
+
+    That's OK.
+
+Our libraries come with \textbf{figure converters} allowing
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  \href{https://plot.ly/matlab/}{MATLAB},
+\item
+  \href{https://plot.ly/matplotlib/}{matplotlib} and
+\item
+  \href{https://plot.ly/ggplot2/}{ggplot2}
+\end{itemize}
+
+figures to be converted to Plotly figures with one line of code!
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c}{\PYZsh{} from IPython.display import IFrame}
+        
+        \PY{n}{IFrame}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{https://plot.ly/matplotlib/}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{width}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{1100px}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{height}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{520px}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} <IPython.lib.display.IFrame at 0x7fd2c4a55250>
+\end{Verbatim}
+        
+
+    \subsubsection{How to make Plotly graph using our web app}
+
+
+    \begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Have some
+  \href{http://en.wikipedia.org/wiki/Portland,_Oregon\#Demographics}{data}
+  to plot
+\end{itemize}
+
+    \begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Go to \href{https://plot.ly}{plot.ly}
+\end{itemize}
+
+
+    \subsubsection{Plotly rhymes with collaboration and reproducibility}
+
+
+    Plotly allows you to \textbf{retrieve} a figure's underlying JSON
+object!
+
+For example, in Python:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{k+kn}{import} \PY{n+nn}{plotly.plotly} \PY{k+kn}{as} \PY{n+nn}{py}
+        
+        \PY{n}{fig} \PY{o}{=} \PY{n}{py}\PY{o}{.}\PY{n}{get\PYZus{}figure}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{https://plot.ly/\PYZti{}etpinard/448}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{n}{fig}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} \{'data': [\{'name': u'Pop.',
+           'type': u'scatter',
+           'x': [u'1860',
+            u'1870',
+            u'1880',
+            u'1890',
+            u'1900',
+            u'1910',
+            u'1920',
+            u'1930',
+            u'1940',
+            u'1950',
+            u'1960',
+            u'1970',
+            u'1980',
+            u'1990',
+            u'2000',
+            u'2010',
+            u'2013'],
+           'y': [u'2,874',
+            u'8,293',
+            u'17,577',
+            u'46,385',
+            u'90,426',
+            u'207,214',
+            u'258,288',
+            u'301,815',
+            u'305,394',
+            u'373,628',
+            u'372,676',
+            u'382,619',
+            u'366,383',
+            u'437,319',
+            u'529,121',
+            u'583,776',
+            u'609,456']\},
+          \{'line': \{'color': u'rgb(255, 127, 14)', 'dash': u'solid', 'width': 6\},
+           'name': u'Pop. - fit',
+           'opacity': 0.5,
+           'type': u'scatter',
+           'x': [1860,
+            1863.1224489795918,
+            1866.2448979591836,
+            1869.3673469387754,
+            1872.4897959183672,
+            1875.6122448979593,
+            1878.734693877551,
+            1881.857142857143,
+            1884.9795918367347,
+            1888.1020408163265,
+            1891.2244897959183,
+            1894.3469387755101,
+            1897.469387755102,
+            1900.591836734694,
+            1903.7142857142858,
+            1906.8367346938776,
+            1909.9591836734694,
+            1913.0816326530612,
+            1916.204081632653,
+            1919.3265306122448,
+            1922.4489795918366,
+            1925.5714285714287,
+            1928.6938775510205,
+            1931.8163265306123,
+            1934.938775510204,
+            1938.061224489796,
+            1941.1836734693877,
+            1944.3061224489795,
+            1947.4285714285713,
+            1950.5510204081634,
+            1953.6734693877552,
+            1956.795918367347,
+            1959.9183673469388,
+            1963.0408163265306,
+            1966.1632653061224,
+            1969.2857142857142,
+            1972.408163265306,
+            1975.530612244898,
+            1978.6530612244899,
+            1981.7755102040817,
+            1984.8979591836735,
+            1988.0204081632653,
+            1991.142857142857,
+            1994.265306122449,
+            1997.3877551020407,
+            2000.5102040816328,
+            2003.6326530612246,
+            2006.7551020408164,
+            2009.8775510204082,
+            2013],
+           'xaxis': u'x',
+           'y': [-24905.93916280754,
+            -12636.203280905262,
+            -366.4673990039155,
+            11903.268482898362,
+            24173.00436480064,
+            36442.74024670292,
+            48712.476128605194,
+            60982.21201050747,
+            73251.94789240882,
+            85521.6837743111,
+            97791.41965621337,
+            110061.15553811472,
+            122330.891420017,
+            134600.6273019202,
+            146870.36318382155,
+            159140.09906572383,
+            171409.8349476261,
+            183679.57082952745,
+            195949.30671142973,
+            208219.042593332,
+            220488.77847523335,
+            232758.51435713656,
+            245028.25023903884,
+            257297.9861209402,
+            269567.72200284246,
+            281837.45788474474,
+            294107.1937666461,
+            306376.92964854836,
+            318646.66553045064,
+            330916.4014123529,
+            343186.1372942552,
+            355455.8731761575,
+            367725.6090580588,
+            379995.3449399611,
+            392265.0808218634,
+            404534.81670376565,
+            416804.552585667,
+            429074.2884675702,
+            441344.0243494725,
+            453613.76023137383,
+            465883.4961132761,
+            478153.2319951784,
+            490422.96787707973,
+            502692.703758982,
+            514962.4396408843,
+            527232.1755227866,
+            539501.9114046888,
+            551771.6472865911,
+            564041.3831684925,
+            576311.1190503947],
+           'yaxis': u'y'\}],
+         'layout': \{'annotations': [\{'align': u'left',
+            'arrowcolor': u'\#636363',
+            'arrowhead': 2,
+            'arrowsize': 1,
+            'arrowwidth': 2,
+            'ax': -265,
+            'ay': -112,
+            'bgcolor': u'rgba(0,0,0,0)',
+            'bordercolor': u'',
+            'borderpad': 1,
+            'borderwidth': 1,
+            'font': \{'size': 28\},
+            'opacity': 0.8,
+            'showarrow': True,
+            'text': u'\$R\^{}2 = 0.960 \textbackslash{}\textbackslash{}\textbackslash{}\textbackslash{} y   = -7.33\textbackslash{}\textbackslash{}times10\^{}6 + 3.93\textbackslash{}\textbackslash{}times10\^{}3 x\$',
+            'textangle': 0,
+            'x': 1933.706238213492,
+            'xanchor': u'auto',
+            'xref': u'x',
+            'y': 262636.0070362699,
+            'yanchor': u'auto',
+            'yref': u'y'\}],
+          'autosize': True,
+          'bargap': 0.2,
+          'bargroupgap': 0,
+          'barmode': u'group',
+          'boxmode': u'overlay',
+          'dragmode': u'zoom',
+          'font': \{'color': u'\#444',
+           'family': u'"Open sans", verdana, arial, sans-serif',
+           'size': 12\},
+          'height': 474,
+          'hidesources': False,
+          'hovermode': u'x',
+          'legend': \{'bgcolor': u'\#fff',
+           'bordercolor': u'\#444',
+           'borderwidth': 0,
+           'font': \{'color': u'', 'family': u'', 'size': 0\},
+           'traceorder': u'normal',
+           'x': 1.02,
+           'xanchor': u'left',
+           'y': 1,
+           'yanchor': u'top'\},
+          'margin': \{'autoexpand': True,
+           'b': 80,
+           'l': 80,
+           'pad': 0,
+           'r': 80,
+           't': 100\},
+          'paper\_bgcolor': u'\#fff',
+          'plot\_bgcolor': u'\#fff',
+          'separators': u'.,',
+          'showlegend': True,
+          'title': u"Portland's Pop",
+          'titlefont': \{'color': u'', 'family': u'', 'size': 0\},
+          'width': 1297,
+          'xaxis': \{'anchor': u'y',
+           'autorange': True,
+           'autotick': True,
+           'domain': [0, 1],
+           'dtick': 20,
+           'exponentformat': u'B',
+           'gridcolor': u'\#eee',
+           'gridwidth': 1,
+           'linecolor': u'\#444',
+           'linewidth': 1,
+           'mirror': False,
+           'nticks': 0,
+           'overlaying': False,
+           'position': 0,
+           'range': [1851.5, 2021.5],
+           'rangemode': u'normal',
+           'showexponent': u'all',
+           'showgrid': True,
+           'showline': False,
+           'showticklabels': True,
+           'tick0': 0,
+           'tickangle': u'auto',
+           'tickcolor': u'\#444',
+           'tickfont': \{'color': u'', 'family': u'', 'size': 0\},
+           'ticklen': 5,
+           'ticks': u'',
+           'tickwidth': 1,
+           'title': u'Census',
+           'titlefont': \{'color': u'', 'family': u'', 'size': 0\},
+           'type': u'linear',
+           'zeroline': True,
+           'zerolinecolor': u'\#444',
+           'zerolinewidth': 1\},
+          'yaxis': \{'anchor': u'x',
+           'autorange': True,
+           'autotick': True,
+           'domain': [0, 1],
+           'dtick': 100000,
+           'exponentformat': u'B',
+           'gridcolor': u'\#eee',
+           'gridwidth': 1,
+           'linecolor': u'\#444',
+           'linewidth': 1,
+           'mirror': False,
+           'nticks': 0,
+           'overlaying': False,
+           'position': 0,
+           'range': [-60148.26911629685, 644698.3299534894],
+           'rangemode': u'normal',
+           'showexponent': u'all',
+           'showgrid': True,
+           'showline': False,
+           'showticklabels': True,
+           'tick0': 0,
+           'tickangle': u'auto',
+           'tickcolor': u'\#444',
+           'tickfont': \{'color': u'', 'family': u'', 'size': 0\},
+           'ticklen': 5,
+           'ticks': u'',
+           'tickwidth': 1,
+           'title': u'Pop.',
+           'titlefont': \{'color': u'', 'family': u'', 'size': 0\},
+           'type': u'-',
+           'zeroline': True,
+           'zerolinecolor': u'\#444',
+           'zerolinewidth': 1\}\}\}
+\end{Verbatim}
+        
+
+    \subsubsection{Remake this plot, with a few modifications}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k+kn}{import} \PY{n+nn}{plotly.plotly} \PY{k+kn}{as} \PY{n+nn}{py}
+        \PY{n}{fig} \PY{o}{=} \PY{n}{py}\PY{o}{.}\PY{n}{get\PYZus{}figure}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{https://plot.ly/\PYZti{}etpinard/448}\PY{l+s}{\PYZdq{}}\PY{p}{)}  \PY{c}{\PYZsh{} as in last slide}
+        
+        \PY{c}{\PYZsh{} Modify the title}
+        \PY{n}{fig}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{layout}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{update}\PY{p}{(}\PY{n}{title}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{The Historical Population of Portland, OR}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{c}{\PYZsh{} Modify the y\PYZhy{}axis label}
+        \PY{n}{fig}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{layout}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{yaxis}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{update}\PY{p}{(}\PY{n}{title}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{Population}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+        
+        \PY{c}{\PYZsh{} Plots the data with marker points (not line)}
+        \PY{n}{fig}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{data}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{update}\PY{p}{(}\PY{n}{mode}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{markers}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+        
+        
+        \PY{c}{\PYZsh{} Re\PYZhy{}generate plot, get a unique URL}
+        \PY{n}{py}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{fig}\PY{p}{,} \PY{n}{filename}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{tug\PYZhy{}conf\PYZhy{}ex}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} u'https://plot.ly/\textasciitilde{}etpinard/449'
+\end{Verbatim}
+        
+    Go to plot's URL (or use \texttt{py.iplot()} to embed plot in IPython
+notebook)
+
+
+    \subsection{Moreover, Plotly}
+
+
+    \begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  is also a social network (with a twitter-like \emph{feed} of figures
+  and \href{https://plot.ly/~etpinard/25}{commenting} on each graphs)
+\item
+  allows users to make \emph{private} figures (kind of like github, see
+  our \href{https://plot.ly/plans}{plans})
+\item
+  allows users to make \emph{streaming} plots (e.g.~a never-ending
+  double pendulum simulation:
+  \href{https://plot.ly/~streaming-demos/4}{graph} and
+  \href{http://nbviewer.ipython.org/github/plotly/python-user-guide/blob/master/s7_streaming/s7_streaming_p2-double-pendulum.ipynb}{code})
+\item
+  is developing of Open Source Libraries (e.g
+  \href{https://github.com/plotly/python-api}{Python},
+  \href{https://github.com/plotly/matlab-api}{MATLAB},
+  \href{https://github.com/ropensci/plotly}{R})
+\end{itemize}
+
+
+    \paragraph{Thank you.}
+
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

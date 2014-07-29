@@ -1,6 +1,7 @@
 """Tools to style a talk."""
 
-from IPython.display import HTML, display, YouTubeVideo
+from IPython.display import HTML, display, YouTubeVideo, Image
+
 
 def prefix(url):
     prefix = '' if url.startswith('http') else 'http://'
@@ -18,20 +19,16 @@ def html_link(url, name=None):
 
 
 # Utility functions
-def website(url, name=None, width=800, height=450):
+def website(url, name=None, width="800px", height="550px"):
     html = []
     if name:
         html.extend(['<div class="nb_link">',
                      simple_link(url, name),
                      '</div>'] )
 
-    html.append('<iframe src="%s"  width="%s" height="%s">' % 
-                (prefix(url), width, height))
+    html.append('<iframe src="%s"  width="%s" height="%s">'
+                % (prefix(url), width, height))
     return HTML('\n'.join(html))
-
-
-def nbviewer(url, name=None, width=800, height=450):
-    return website('nbviewer.ipython.org/url/' + url, name, width, height)
 
 # Load and publish CSS
 style = HTML(open('style.css').read())
